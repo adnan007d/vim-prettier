@@ -15,8 +15,6 @@ function! prettier#resolver#config#resolve(config, hasSelection, start, end) abo
           \ get(a:config, 'singleQuote', g:prettier#config#single_quote) .
           \ ' --bracket-spacing=' .
           \ get(a:config, 'bracketSpacing', g:prettier#config#bracket_spacing) .
-          \ ' --jsx-bracket-same-line=' .
-          \ get(a:config, 'jsxBracketSameLine', g:prettier#config#jsx_bracket_same_line) .
           \ ' --arrow-parens=' .
           \ get(a:config, 'arrowParens', g:prettier#config#arrow_parens) .
           \ ' --trailing-comma=' .
@@ -32,8 +30,7 @@ function! prettier#resolver#config#resolve(config, hasSelection, start, end) abo
           \ get(a:config, 'requirePragma', g:prettier#config#require_pragma) .
           \ ' --end-of-line=' .
           \ get(a:config, 'endOfLine', g:prettier#config#end_of_line) .
-          \ ' --loglevel error '.
-          \ ' --stdin '
+          \ ' --log-level error '.
 
   return l:cmd
 endfunction
