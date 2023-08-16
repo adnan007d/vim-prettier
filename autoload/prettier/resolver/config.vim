@@ -39,7 +39,7 @@ function! prettier#resolver#config#resolve(config, hasSelection, start, end) abo
     if str2nr(strpart(output, 0, 1)) <= 2
       let l:cmd = l:cmd . ' --loglevel error' . ' --stdin '
     else
-      let l:cmd = l:cmd .  '--log-level error '
+      let l:cmd = l:cmd .  ' --log-level error '
     endif
 
   return l:cmd
