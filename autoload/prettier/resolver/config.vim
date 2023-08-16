@@ -29,8 +29,18 @@ function! prettier#resolver#config#resolve(config, hasSelection, start, end) abo
           \ ' --require-pragma=' .
           \ get(a:config, 'requirePragma', g:prettier#config#require_pragma) .
           \ ' --end-of-line=' .
-          \ get(a:config, 'endOfLine', g:prettier#config#end_of_line) .
-          \ ' --log-level error '
+          \ get(a:config, 'endOfLine', g:prettier#config#end_of_line)
+    
+
+    let output = system(prettier#resolver#executable#getPath() . ' -v')
+    
+    " Checking for prettier version and adding options according to it
+    " Thanks to prettier 3 for breaking changes :)
+    if str2nr(strpart(output, 0, 1)) <= 2
+      let l:cmd = l:cmd . ' --loglevel error' . ' --stdin '
+    else
+      let l:cmd = l:cmd .  '--log-level error '
+    endif
 
   return l:cmd
 endfunction
