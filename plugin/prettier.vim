@@ -39,6 +39,9 @@ let g:prettier#autoformat_config_files = get(g:, 'prettier#autoformat_config_fil
 " path to prettier cli
 let g:prettier#exec_cmd_path = get(g:, 'prettier#exec_cmd_path', 0)
 
+" Getting prettier version to add appropriate arguments
+let g:prettier_version = str2nr(strpart(system(prettier#resolver#executable#getPath() . ' -v'), 0, 1))
+
 " calling :Prettier by default runs synchronous
 let g:prettier#exec_cmd_async = get(g:, 'prettier#exec_cmd_async', 0)
 
